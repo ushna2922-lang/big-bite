@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { 
+    @apply bg-[#111] text-white font-sans overflow-x-hidden; 
+  }
+}
+
+@import "tailwindcss";
+
+html {
+  overflow-x: hidden; /* This is the most important line */
+  width: 100vw;       /* Forces the width to match viewport */
+}
+
+body {
+  @apply bg-[#111] text-white;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Double-tap security */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}
