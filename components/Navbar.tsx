@@ -62,10 +62,12 @@ export default function Navbar() {
               <ShoppingCart size={18} className="text-yellow-500" />
 
               {/* 3. The Red Circle Badge */}
+              {/* Inside Navbar.tsx, replace the badge div with this: */}
               {totalItems > 0 && (
                 <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
+                  key={totalItems} // Key change triggers animation whenever totalItems changes
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1.2, opacity: 1 }} // It will "pop" to 1.2x size
                   className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold border-2 border-[#111]"
                 >
                   {totalItems}

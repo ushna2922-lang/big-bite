@@ -1,7 +1,9 @@
 "use client";
 import { useState } from "react";
-import { ShoppingCart, ChevronDown } from "lucide-react";
+import { ShoppingCart, ChevronDown, Check } from "lucide-react";
 import { useCart } from "@/context/CartContext"; // 1. Import your Context
+import { motion } from "framer-motion"; // Add 'motion' here
+
 
 export default function FoodCard({ item }: { item: any }) {
 
@@ -9,6 +11,8 @@ export default function FoodCard({ item }: { item: any }) {
   const hasSizes = item.sizes && Array.isArray(item.sizes) && item.sizes.length > 0;
   const [selectedSize, setSelectedSize] = useState(item.sizes ? item.sizes[0] : null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isAdded, setIsAdded] = useState(false); // 1. Added this missing hook
+
 
   // DEBUG: Open your browser console (F12) and look for this log!
   console.log("Card Item:", item.name, "Has Sizes:", hasSizes);
@@ -16,7 +20,10 @@ export default function FoodCard({ item }: { item: any }) {
 
   const handleAddToCart = () => {
     addToCart(item, selectedSize);
-    alert("Added to cart!");
+    // Trigger animation
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 1000);
+
   };
 
   return (
@@ -76,15 +83,15 @@ export default function FoodCard({ item }: { item: any }) {
 
 
       {/* Cart Button */}
-      <button
-        onClick={() => {
-          // If it has no sizes, selectedSize is null. That's fine now!
-          addToCart(item, selectedSize);
-        }}
-        className="w-full bg-yellow-500 cursor-pointer text-black font-bold py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-yellow-600 transition shrink-0"
+      <motion.button
+        whileTap={{ scale: 0.95 }}
+        // 2. Animate based on isAdded state
+        animate={isAdded ? { backgroundColor: "#16a34a", color: "#ffffff" } : {}}
+        onClick={handleAddToCart}
+        className="w-full bg-yellow-500 text-black font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors shrink-0"
       >
-        <ShoppingCart size={16} /> Cart
-      </button>
+        <ShoppingCart size={18} /> {isAdded ? "Added!" : "Cart"}
+      </motion.button>
     </div>
   );
 }

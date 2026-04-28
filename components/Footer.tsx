@@ -121,8 +121,8 @@ export default function Footer() {
                 <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between text-xs gap-4 text-center md:text-left">
                     <p>© 2026 Severl - The taste of life. All rights reserved.</p>
                     <div className="flex justify-center gap-8">
-                        <a href="#" className="hover:text-white">Privacy Policy</a>
-                        <a href="#" className="hover:text-white">Terms of Service</a>
+                        <a href="privacy" className="hover:text-white">Privacy Policy</a>
+                        <a href="terms" className="hover:text-white">Terms of Service</a>
                     </div>
                 </div>
             </div>
