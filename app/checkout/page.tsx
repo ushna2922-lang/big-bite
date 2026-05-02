@@ -65,10 +65,10 @@ export default function CheckoutPage() {
 
         // 1. Create a "Pretty" version of the items for the database
         // This removes image URLs and makes the order look like a real receipt
-        const cleanCart = cart.map(item => ({
+        const cleanCart = cart.map((item: any) => ({
             name: item.name,
             qty: item.qty,
-            size: item.sizeLabel || "Default", // Only saves the label, no image!
+            size: item.sizeLabel || "Default",
             price: item.price
         }));
 
@@ -92,7 +92,7 @@ export default function CheckoutPage() {
         }
 
         // 3. Format "Beautiful" Receipt for WhatsApp
-        const orderItems = cart.map(i =>
+        const orderItems = cart.map((i: any) =>
             `• ${i.name} ${i.sizeLabel && i.sizeLabel !== "Standard" ? `(${i.sizeLabel})` : ''} x${i.qty} = Rs ${parseFloat(i.price) * i.qty}`
         ).join("%0A");
 
