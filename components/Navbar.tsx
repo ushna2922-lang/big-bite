@@ -30,7 +30,7 @@ export default function Navbar() {
         <div className="max-w-[1600px] mx-auto px-8 w-full flex items-center justify-between">
           <div className="text-3xl font-black italic tracking-tighter">
             <Link href="/" className="text-3xl font-black italic tracking-tighter cursor-pointer">
-              <span className="text-red-600">G</span>rilloo
+              <span className="text-red-600">B</span>ig Bite
             </Link>
           </div>
 
@@ -47,9 +47,15 @@ export default function Navbar() {
                 <div className="flex items-center gap-2 text-xs uppercase tracking-widest transition-colors hover:text-yellow-500">
                   <link.icon size={20} /> {link.name}
                 </div>
-                {hovered === link.name && (
-                  <motion.div layoutId="nav-underline" className="absolute bottom-4 left-0 w-full h-[2px] bg-yellow-500" transition={{ type: "spring", stiffness: 300, damping: 30 }} />
-                )}
+                <motion.div
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={{
+                    width: hovered === link.name ? "100%" : "0%",
+                    opacity: hovered === link.name ? 1 : 0
+                  }}
+                  className="absolute bottom-4 left-0 h-[2px] bg-[#f59e0b]"
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
               </Link>
             ))}
           </div>

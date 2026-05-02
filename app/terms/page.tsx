@@ -62,7 +62,7 @@ export default function TermsOfService() {
       <div className="max-w-4xl mx-auto mt-12 bg-[#1a1a1a] p-8 rounded-3xl border border-yellow-500/20 text-center">
         <h3 className="text-xl font-bold text-white mb-4">Questions About These Terms?</h3>
         <div className="flex justify-center gap-4">
-            <a href="tel:03213667355" className="bg-yellow-500 text-black px-6 py-3 rounded-lg font-bold text-sm">Call: 03213667355</a>
+            <a href="tel:03001115919" className="bg-yellow-500 text-black px-6 py-3 rounded-lg font-bold text-sm">Call: 03001115919</a>
             <Link href="/contact" className="bg-white text-black px-6 py-3 rounded-lg font-bold text-sm">Contact Us</Link>
         </div>
       </div>

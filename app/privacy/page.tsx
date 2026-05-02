@@ -58,8 +58,8 @@ export default function PrivacyPolicy() {
         <h3 className="text-xl font-bold text-white mb-4">Questions About This Policy?</h3>
         <p className="text-sm mb-8">If you have any questions about this Privacy Policy, please don't hesitate to contact us.</p>
         <div className="flex justify-center gap-4">
-            <a href="tel:03290039757" className="flex items-center gap-2 bg-yellow-500 text-black px-6 py-3 rounded-lg font-bold text-sm">
-                <Phone size={16}/> Call: 03290039757
+            <a href="tel:03000115919" className="flex items-center gap-2 bg-yellow-500 text-black px-6 py-3 rounded-lg font-bold text-sm">
+                <Phone size={16}/> Call: 03000115919
             </a>
             <Link href="/contact" className="flex items-center gap-2 bg-white text-black px-6 py-3 rounded-lg font-bold text-sm">
                 <Mail size={16}/> Contact Us

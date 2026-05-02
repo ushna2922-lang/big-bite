@@ -55,68 +55,62 @@ export default function CheckoutPage() {
         return isValid;
     };
 
-
     const handlePlaceOrder = async () => {
-
-        if (!validate()) return;
-        if (cart.length === 0) return;
+        if (!formData.name || !formData.phone || !formData.address) {
+            alert("Please fill in all required fields!");
+            return;
+        }
 
         setLoading(true);
 
+        // 1. Create a "Pretty" version of the items for the database
+        // This removes image URLs and makes the order look like a real receipt
+        const cleanCart = cart.map(item => ({
+            name: item.name,
+            qty: item.qty,
+            size: item.sizeLabel || "Default", // Only saves the label, no image!
+            price: item.price
+        }));
+
+        // 2. Save to Database
         const { error } = await supabase.from('orders').insert([
             {
                 customer_name: formData.name,
                 phone: formData.phone,
                 address: formData.address,
-                items: cart.map((i: any) => ({
-                    name: i.name,
-                    size: i.selectedSize?.label || i.size || "Default",
-                    qty: i.qty,
-                    price: i.price
-                })),
-                total: subtotal
+                items: cleanCart, // <--- We send cleanCart instead of cart
+                total: subtotal,
+                status: 'pending'
             }
         ]);
 
         if (error) {
             setLoading(false);
-            alert("Error placing order");
+            console.error("Supabase Error:", error);
+            alert("Error placing order: " + error.message);
             return;
         }
 
-        // ✅ Clean WhatsApp message (receipt style)
-        const orderItems = cart.map((i: any) => {
-            const sizeLabel =
-                i.selectedSize?.label ||
-                i.size ||
-                "";
+        // 3. Format "Beautiful" Receipt for WhatsApp
+        const orderItems = cart.map(i =>
+            `• ${i.name} ${i.sizeLabel && i.sizeLabel !== "Standard" ? `(${i.sizeLabel})` : ''} x${i.qty} = Rs ${parseFloat(i.price) * i.qty}`
+        ).join("%0A");
 
-            const size = sizeLabel && sizeLabel !== "Default"
-                ? ` (${sizeLabel})`
-                : "";
+        const whatsappMsg = `*🧾 New Order Received!*%0A%0A` +
+            `👤 *Name:* ${formData.name}%0A` +
+            `📞 *Phone:* ${formData.phone}%0A` +
+            `📍 *Address:* ${formData.address}%0A%0A` +
+            `*Items:*%0A${orderItems}%0A%0A` +
+            `💰 *Total:* Rs ${subtotal.toFixed(2)}`;
 
-            return `• ${i.name}${size} x${i.qty} = Rs ${parseFloat(i.price) * i.qty}`;
-        }).join("%0A");
-
-        const whatsappMsg =
-            `🧾 *New Order*%0A
-------------------------%0A
-👤 *Name:* ${formData.name}%0A
-📞 *Phone:* ${formData.phone}%0A
-📍 *Address:* ${formData.address}%0A
-------------------------%0A
-${orderItems}%0A
-------------------------%0A
-💰 *Total:* Rs ${subtotal.toFixed(2)}`;
-
+        // 4. Trigger WhatsApp
         window.open(`https://wa.me/923213667355?text=${whatsappMsg}`, '_blank');
 
-        // ✅ CLEAR CART + SHOW SUCCESS
-        setCart([]); // IMPORTANT: import from context
+        // 3. Success...
+        setCart([]);
         setOrderPlaced(true);
         setLoading(false);
     };
-
 
     const testConnection = async () => {
         const { data, error } = await supabase
@@ -234,14 +228,14 @@ ${orderItems}%0A
                                     <span>Total</span> <span>Rs {subtotal.toFixed(2)}</span>
                                 </div>
                             </div>
+
+
                             <button
                                 onClick={handlePlaceOrder}
-                                disabled={!isFormValid || loading}
+                                disabled={loading} // Only disable based on loading
                                 className={`w-full mt-8 py-4 rounded-xl font-bold transition flex justify-center items-center gap-2
-    ${loading
-                                        ? "bg-gray-600 cursor-not-allowed"
-                                        : "bg-yellow-500 hover:bg-yellow-400 text-black"}
-  `}
+        ${loading ? "bg-gray-600 cursor-not-allowed" : "bg-yellow-500 hover:bg-yellow-400 text-black"}
+    `}
                             >
                                 {loading ? "Placing Order..." : "Place Order"}
                             </button>

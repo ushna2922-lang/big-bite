@@ -6,7 +6,7 @@ export default function DeliverySection() {
   return (
     <section className="py-24 px-8 bg-[#0f1012] text-white">
       <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        
+
         {/* Left: Info */}
         <div>
           <h2 className="text-5xl font-serif italic mb-6">Swift & Hot Delivery</h2>
@@ -29,29 +29,23 @@ export default function DeliverySection() {
 
           <div className="flex items-center gap-2 text-sm text-neutral-300">
             <MapPin size={18} className="text-yellow-500" />
-            <p>P-562/A Opposite Govt. Nusrat Fateh Ali Khan Hospital</p>
+            <p>Pak-Arab, Housing Block B Scheme, Lahore, Pakistan</p>
           </div>
         </div>
 
         {/* Right Side: Map Visual Container */}
-        <div className="relative border border-white/10 rounded-[3rem] p-8 h-[400px] flex items-center justify-center bg-[#111]">
-           
-           {/* Map Background */}
-           <div className="absolute inset-0 p-10 opacity-20">
-             <MapSvg /> 
-           </div>
-           
-           {/* The Pulsing Marker */}
-           <div className="relative z-10 w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center animate-pulse">
-             <div className="w-10 h-10 bg-yellow-500/30 rounded-full flex items-center justify-center">
-               <div className="w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center">
-                 <span className="text-white text-xs">🍴</span>
-               </div>
-             </div>
-           </div>
+        <div className="relative border border-white/10 rounded-[3rem] overflow-hidden h-[400px] w-full bg-[#111]">
 
-        </div> {/* This closes the Right Side container correctly */}
-
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13617.573462531225!2d74.35145899999999!3d31.430835899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391907b69174d19d%3A0xa25ce8e180ef6c8c!2sBig%20Bite%20fast%20food!5e0!3m2!1sen!2s!4v1777756179915!5m2!1sen!2s"
+            className="w-full h-full grayscale invert-[0.9] contrast-[1.2] brightness-[0.8]"
+            style={{ border: '0' }}
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Restaurant Location"
+          />
+        </div>
       </div>
     </section>
   );

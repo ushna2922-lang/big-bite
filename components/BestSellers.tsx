@@ -1,4 +1,6 @@
 import ProductCard from "./ProductCard";
+import Link from "next/link";
+
 
 const products = [
   { 
@@ -26,12 +28,17 @@ const products = [
     desc: "Wings, spring rolls, and dip sauce." 
   },
   { 
-    name: "Several Special Pizza", 
+    name: "Special Pizza", 
     badge: "Options", 
     img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=600", 
-    price: "1,400", 
+    price: "1400", 
     rating: "4.9", 
-    desc: "Large hand-tossed with fresh toppings." 
+    desc: "Large hand-tossed with fresh toppings.",
+    sizes: [
+      { label: "Small", price: "600" },
+      { label: "Medium", price: "950" },
+      { label: "Large", price: "1400" }
+    ]
   },
 ];;
 
@@ -44,7 +51,7 @@ export default function BestSellers() {
             <p className="text-yellow-500 text-xs uppercase tracking-widest mb-2">Most Wanted</p>
             <h2 className="text-5xl font-serif italic font-bold">The Best Sellers</h2>
           </div>
-          <a href="#" className="text-sm underline hover:text-yellow-500">See Full Menu</a>
+          <a href="menu" className="text-sm underline hover:text-yellow-500">See Full Menu</a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

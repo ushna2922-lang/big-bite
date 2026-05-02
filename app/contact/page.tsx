@@ -64,8 +64,8 @@ export default function ContactPage() {
                     <div className="border border-white/10 rounded-2xl p-6 bg-[#111]">
                         <div className="flex items-center gap-2 mb-4 text-white font-bold"><Phone size={18} className="text-yellow-500" /> Call Us</div>
                         <div className="space-y-3">
-                            <a href="tel:03213667355" className="block bg-[#1a1a1a] p-4 rounded-xl border border-white/10 text-sm hover:border-yellow-500 transition-all">03290039757</a>
-                            <a href="tel:03213667355" className="block bg-[#1a1a1a] p-4 rounded-xl border border-white/10 text-sm hover:border-yellow-500 transition-all">03127172184</a>
+                            <a href="tel:03001115919" className="block bg-[#1a1a1a] p-4 rounded-xl border border-white/10 text-sm hover:border-yellow-500 transition-all">03001115919</a>
+                            <a href="tel:03001115919" className="block bg-[#1a1a1a] p-4 rounded-xl border border-white/10 text-sm hover:border-yellow-500 transition-all">03001115919</a>
                         </div>
                     </div>
 
@@ -73,9 +73,9 @@ export default function ContactPage() {
                     <div className="border border-white/10 rounded-2xl p-6 bg-[#111]">
                         <div className="flex items-center gap-2 mb-4 text-white font-bold"><MapPin size={18} className="text-yellow-500" /> Visit Us</div>
                         <div className="bg-[#1a1a1a] p-4 rounded-xl border border-white/10 text-sm">
-                            <p>P-562/A Opposite Govt. Nusrat Fateh Ali Khan Hospital, Faisalabad</p>
+                            <p>Pak-Arab, Housing Block B Scheme, Lahore, Pakistan</p>
                             <a
-                                href="https://maps.app.goo.gl/YOUR_GOOGLE_MAPS_LINK"
+                                href="https://www.google.com/maps/place/Big+Bite+fast+food/@31.4308359,74.351459,15z/data=!4m10!1m2!2m1!1sbig+bite+in+lahore!3m6!1s0x391907b69174d19d:0xa25ce8e180ef6c8c!8m2!3d31.430796!4d74.3516221!15sChJiaWcgYml0ZSBpbiBsYWhvcmUiA4gBAVoUIhJiaWcgYml0ZSBpbiBsYWhvcmWSAQpyZXN0YXVyYW50mgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDJ0S1VVMHhPVEppUmsxNFV6QlpORTlWU2pGWmJscFNZV3hXUlZKSVl4QULgAQD6AQQILxBL!16s%2Fg%2F11k3thv587?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D"
                                 target="_blank"
                                 className="text-yellow-500 text-xs mt-2 underline block"
                             >
@@ -145,7 +145,7 @@ export default function ContactPage() {
                     <Link href="/menu" className="bg-black text-white px-8 py-3 rounded-lg font-bold hover:bg-neutral-800 transition">
                         View Menu
                     </Link>
-                    <a href="tel:03213667355" className="bg-white text-black px-8 py-3 rounded-lg font-bold hover:bg-neutral-100 transition">
+                    <a href="tel:03001115919" className="bg-white text-black px-8 py-3 rounded-lg font-bold hover:bg-neutral-100 transition">
                         Call Now
                     </a>
                 </div>

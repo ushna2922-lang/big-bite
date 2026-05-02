@@ -8,7 +8,7 @@ const slides = [
   {
     id: 1,
     tag: "🔥 MOST ORDERED",
-    title: "Taste That Stops Time.",
+    title: "Taste That Stops.",
     btn: "Order Now",
     transbtn: "View Menu→",
     img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=2000"
@@ -16,7 +16,7 @@ const slides = [
   {
     id: 2,
     tag: "🍔 SIGNATURE",
-    title: "Crafted For Perfection.",
+    title: "Crafted For Taste.",
     btn: "Order Now",
     transbtn: "Customize→",
     img: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=2000"
@@ -40,16 +40,16 @@ const slides = [
   {
     id: 5,
     tag: "🥗 FRESH",
-    title: "Greens That Taste Fresh.",
-    btn: "See Salad",
+    title: "Greens That Fresh.",
+    btn: "See More",
     transbtn: "Add to Cart→",
     img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=2000"
   },
   {
     id: 6,
     tag: "🍰 DESSERT",
-    title: "Sweet Ends To The Day.",
-    btn: "View Dessert",
+    title: "Sweet Ends To Day.",
+    btn: "View Menu",
     transbtn: "View More→",
     img: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=2000"
   },
@@ -71,7 +71,7 @@ export default function HeroCarousel() {
   const currentSlide = slides[index];
 
   return (
-    <section className="relative w-full h-[70vh] md:h-screen bg-[#111] overflow-hidden border-b-1 border-red-600/50">
+    <section className="relative w-full h-[80vh] md:h-screen bg-[#111] overflow-hidden border-b-1 border-red-600/50">
 
       {/* Background - Full cover */}
       <AnimatePresence mode="wait">
@@ -101,14 +101,14 @@ export default function HeroCarousel() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full max-w-2xl text-left "
+            className="w-full max-w-2xl text-left pt-10 md:pt-0"
           >
-            <span className="text-yellow-500 border-2 border-yellow-500 px-4 py-2 text-[10px] md:text-[12px] uppercase rounded-full tracking-[0.2em]  inline-block mt-9  mb-6 md:mt-15">
+            <span className="text-yellow-500 border-2 border-yellow-500 px-4 py-1.5 text-[10px] uppercase rounded-full tracking-[0.2em]  inline-block  mb-6">
               {currentSlide.tag}
             </span>
 
             {/* Title - EXACT SPLIT COLOR */}
-            <h1 className="text-[clamp(2.5rem,10vw,6rem)] font-black uppercase leading-[0.9] text-white">
+            <h1 className="text-[clamp(2.5rem,6vw,6rem)] font-black uppercase leading-[0.85] text-white">
               {currentSlide.title.split(" ").slice(0, 2).join(" ")} <br />
               <span className="text-yellow-500">{currentSlide.title.split(" ").slice(2).join(" ")}</span>
             </h1>

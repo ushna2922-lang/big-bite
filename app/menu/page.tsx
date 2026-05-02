@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import FoodCard from "@/components/FoodCard";
+import DealCard from "@/components/DealCard";
 import { menuData } from "@/data/menu";
 
 
@@ -64,15 +65,20 @@ function MenuContent() {
             <div className="max-w-[1400px] mx-auto p-8 py-16">
                 <AnimatePresence mode="popLayout">
                     {menuData
-                        .filter(section => active === "ALL MENU" || section.category.toUpperCase() === active)
+                        .filter(section =>
+                            active === "ALL MENU" ||
+                            section.category.toLowerCase() === active.toLowerCase()
+                        )
                         .map((section) => (
                             <div key={section.category} className="mb-16">
                                 <h2 className="text-2xl font-bold uppercase text-yellow-500 border-l-4 border-yellow-500 pl-4 mb-10">
                                     {section.category}
                                 </h2>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                                    {section.items.map((item: any, i: number) => (
-                                        <FoodCard key={i} item={item} />
+                                    {section.items.map((item: any) => (
+                                        section.isDeal ?
+                                            <DealCard key={item.name} item={item} /> :
+                                            <FoodCard key={item.name} item={item} />
                                     ))}
                                 </div>
                             </div>
